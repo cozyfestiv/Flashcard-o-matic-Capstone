@@ -1,0 +1,79 @@
+/* CreateDeck */
+
+#myForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .button-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+/* ViewDeck */
+
+  .deck-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: column;
+  }
+
+  .card-subtitle {
+    margin-left: auto;
+  }
+    
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  .button-container button {
+    flex: 3;
+    margin-right: 10px;
+  }
+
+  .title-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  nav {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* Cards */
+
+  .card-container {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .row-content {
+    margin-top: 10px;
+  }
+  
+  .card-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
