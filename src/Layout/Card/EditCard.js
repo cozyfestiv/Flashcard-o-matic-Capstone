@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { readCard, readDeck, updateCard } from '../../utils/api';
 import { useParams, Link, useHistory } from 'react-router-dom';
-import CardForm from './CardForm';
 
 export default function EditCard () {
   //nav bar with home link / deck name / edit card "cardid"
@@ -18,7 +17,6 @@ export default function EditCard () {
         setDeck(fetchedDeck);
       } catch (error) {
         console.error(error);
-        n;
       }
     }
     async function fetchCards () {
@@ -33,7 +31,7 @@ export default function EditCard () {
     fetchCards();
   }, [deckId, cardId]);
 
-  const handleChange = ({ target }) => {
+  const changeHandler = ({ target }) => {
     setCard({
       ...card,
       [target.name]: target.value
@@ -41,7 +39,7 @@ export default function EditCard () {
   };
 
   //use update api should send user to deck screen
-  const handleSubmit = async event => {
+  const submitHandler = async event => {
     event.preventDefault();
     await updateCard(card);
     history.push(`/decks/${deckId}`);
@@ -53,12 +51,30 @@ export default function EditCard () {
         <Link to='/'>Home</Link> / {deck.name} / Edit Card {cardId}
       </nav>
       <h2>Edit Card</h2>
-      <CardForm
-        flashCard={card}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-      />
-      {/* the javascript is being referred to with this name of the prop that were passing into ie prop=thing on this page */}
+      <form className='cardEditForm'>
+        <div className='cardEditFront'>
+          <label htmlFor='front'>Front</label>
+          <textarea
+            id='front'
+            name='front'
+            value={card.front}
+            onChange={changeHandler}
+          ></textarea>
+        </div>
+        <div className='cardEditBack'>
+          <label htmlFor='back'>Back</label>
+          <textarea
+            id='back'
+            name='back'
+            value={card.back}
+            onChange={changeHandler}
+          ></textarea>
+        </div>
+      </form>
+      <Link to={`/decks/${deckId}`}>
+        <button>Cancel</button>
+      </Link>
+      <button onClick={submitHandler}>Submit</button>
     </div>
   );
 }

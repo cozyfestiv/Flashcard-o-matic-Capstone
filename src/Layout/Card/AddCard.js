@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { createCard, readDeck } from '../../utils/api';
 import { Link } from 'react-router-dom';
+import CardForm from './CardForm';
 
 function AddCard () {
   const initialFormState = {
@@ -28,14 +29,14 @@ function AddCard () {
   const handleChange = ({ target }) => {
     setCard({
       ...card,
-      [target.name]: target.value,
-      deckId
+      [target.id]: target.value
     });
   };
 
-  const submitHandler = async event => {
+  const handleSubmit = async event => {
     event.preventDefault();
     await createCard(deckId, card);
+    // console.log('created new:', card);
     setCard(initialFormState);
   };
 
@@ -57,34 +58,7 @@ function AddCard () {
       <h3>
         <span> {deck.name} </span> : <span>Add Card </span>
       </h3>
-      <form>
-        <div>
-          <label>Front</label>
-          <textarea
-            id='front'
-            name='front'
-            placeholder='Front side of card'
-            value={card.front}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div>
-          <label>Back</label>
-          <textarea
-            id='back'
-            name='back'
-            placeholder='Back side of card'
-            value={card.back}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <Link to={`/decks/${deckId}`}>
-          <button className='btn btn-secondary m-1'>Done</button>
-        </Link>
-        <button className='btn btn-primary m-1' onClick={submitHandler}>
-          Save
-        </button>
-      </form>
+      <CardForm handleSubmit={handleSubmit} handleChange={handleChange} />
     </div>
   );
 }
