@@ -47,6 +47,12 @@
       "back": "No, but I think I'm starting to get the hang of it!",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "asdf",
+      "back": "edit",
+      "deckId": 1,
+      "id": 8
     }
   ]
 }
