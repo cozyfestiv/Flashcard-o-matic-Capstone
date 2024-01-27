@@ -9,12 +9,17 @@ function StudyCard ({
   numberOfCards
 }) {
   return (
-    <div className='card-container'>
-      <h5>
+    <div className='card-container m-5 p-0'>
+      <h5 className='card-header'>
         Card {cardPositon} of {numberOfCards}{' '}
       </h5>
-      <p>{isFlipped ? card.back : card.front}</p>
-      <button className='btn btn-secondary mr-2' onClick={flipHandler}>
+      <p className='lead p-2 text-center'>
+        {isFlipped ? card.back : card.front}
+      </p>
+      <button
+        className='btn btn-secondary m-3 align-center'
+        onClick={flipHandler}
+      >
         Flip
       </button>
       {isFlipped && (

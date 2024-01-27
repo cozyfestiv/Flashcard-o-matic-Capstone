@@ -15,17 +15,25 @@ function Card ({ card, id }) {
   };
 
   return (
-    <div className='card-container'>
-      <div className='row'>
-        <div className='col'>
-          <p>{card.front}</p>
+    <div className='card-container m-3 p-0'>
+      <div className='row card-header m-1'>
+        <div className='col  pl-4'>
+          <h4 className=''>Front</h4>
         </div>
+        <div className='col pl-4'>
+          <h4 className=''>Back</h4>
+        </div>
+      </div>
+      <div className='row card-text pt-2'>
         <div className='col'>
-          <p>{card.back}</p>
+          <p className='lead p-2'>{card.front}</p>
+        </div>
+        <div className='col '>
+          <p className='lead p-2'>{card.back}</p>
         </div>
       </div>
       <div className='row-content'>
-        <div className='card-button-container'>
+        <div className='card-button-container p-2'>
           <Link to={`${url}/cards/${id}/edit`} className='btn btn-primary'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
